@@ -11,6 +11,4 @@ const updateStatusContact = async (req, res) => {
   res.json(result);
 };
 
-export default {
-  updateStatusContact: ctrlWrapper(updateStatusContact),
-};
+export default ctrlWrapper(updateStatusContact);

@@ -11,6 +11,4 @@ const deleteById = async (req, res) => {
   res.json({ message: "contact deleted" });
 };
 
-export default {
-  deleteById: ctrlWrapper(deleteById),
-};
+export default ctrlWrapper(deleteById);

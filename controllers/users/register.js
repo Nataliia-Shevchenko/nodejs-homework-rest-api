@@ -21,6 +21,4 @@ const register = async (req, res) => {
   });
 };
 
-export default {
-  register: ctrlWrapper(register),
-};
+export default ctrlWrapper(register);

@@ -12,7 +12,12 @@ const userSigninSchema = Joi.object({
   email: Joi.string().pattern(emailRegexp).required(),
 });
 
+const userUpdateSubscriptionSchema = Joi.object({
+  subscription: Joi.string().required().valid("starter", "pro", "business"),
+});
+
 export default {
   userSignupSchema,
   userSigninSchema,
+  userUpdateSubscriptionSchema,
 };

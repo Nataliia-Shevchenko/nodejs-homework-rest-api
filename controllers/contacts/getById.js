@@ -11,6 +11,4 @@ const getById = async (req, res) => {
   res.json(result);
 };
 
-export default {
-  getById: ctrlWrapper(getById),
-};
+export default ctrlWrapper(getById);

@@ -1,12 +1,12 @@
 import Contact from "../../models/contacts-model.js";
 import { ctrlWrapper } from "../../decorators/index.js";
 
-
 const getAll = async (req, res) => {
-    const result = await Contact.find();
-    res.json(result);
-  };
+  const { _id: owner } = req.user;
+  const { page = 1, limit = 20, ...query } = req.query;
+  const skip = (page - 1) * limit;
+  const result = await Contact.find({ owner, ...query },"-createdAt", { skip, limit });
+  res.json(result);
+};
 
-  export default {
-    getAll: ctrlWrapper(getAll),
-  }
+export default ctrlWrapper(getAll);
