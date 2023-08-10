@@ -8,6 +8,8 @@ import {
   logout,
   updateSubscription,
   updateAvatar,
+  verify,
+  resendVerifyEmail,
 } from "../../controllers/users/index.js";
 import { authenticate, upload, resizeImage } from "../../middlewares/index.js";
 
@@ -17,6 +19,14 @@ authRouter.post(
   "/register",
   validateBody(usersSchemas.userSignupSchema),
   register
+);
+
+authRouter.get("/verify/:verificationToken", verify);
+
+authRouter.post(
+  "/verify",
+  validateBody(usersSchemas.userEmailSchema),
+  resendVerifyEmail
 );
 
 authRouter.post("/login", validateBody(usersSchemas.userSigninSchema), login);
